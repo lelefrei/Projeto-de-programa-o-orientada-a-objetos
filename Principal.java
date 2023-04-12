@@ -45,13 +45,11 @@ public class Principal {
                         if ( c.getCpf().equals(cpf)){
                             titular = c;
 
-                            break;
-
                         }
-                    }
+                        }
 
 
-                    System.out.print("Número da conta: ");
+                    System.out.print(" Número da conta: ");
                     int numeroConta = sc.nextInt();
                     System.out.print("Saldo: ");
                     double saldo = sc.nextDouble();
@@ -59,8 +57,6 @@ public class Principal {
                     System.out.println("Selecione o cliente:");
                     for (int j = 0; j < clientes.size(); j++) {
                         System.out.println((j + 1) + " - " + clientes.get(j).getNome());
-
-                        break;
                     }
 
                     int escolha = sc.nextInt();
@@ -70,8 +66,6 @@ public class Principal {
                        Banco conta = new Banco(cliente, numeroConta, saldo);
                        contas.add(conta);
                        System.out.println("Conta cadastrada com sucesso!");
-                   } else {
-                       System.out.println("Erro");
                    }
                    break;
 
@@ -80,29 +74,43 @@ public class Principal {
                     System.out.print("Número da conta: ");
 
                     numeroConta = sc.nextInt();
-                    sc.nextLine();
-                    banco = null;
+
+                     Banco conta = null;
                     for (Banco b : contas) {
 
                         if (b.getNumeroConta() == numeroConta) {
                             banco = b;
-                            System.out.println("O saldo da conta " + banco.getNumeroConta() + " é R$" + banco.getSaldo());
-                            break;
-                        }
 
-                    }
-                case 4:
+                        }
+                        }
+                         if (contas !=null){
+                        for (Banco b : contas) {
+                            if (b.getNumeroConta() == numeroConta){
+                                System.out.println("Saldo" + b.getSaldo());
+                                break;
+                            }
+                            }
+                            }  else {
+                               System.out.println(" A conta informada não existe");
+                         }
+
+                     break;
+
+                     case 4:
+
                     System.out.println("Contas cadastradas");
 
                     for (Banco b : contas) {
                         System.out.println("Nome: " + b.getCliente().getNome());
+                        System.out.println("Cpf: " + b.getCliente().getCpf());
                         System.out.println("Número da conta: " + b.getNumeroConta());
                         System.out.println("Saldo: R$" + b.getSaldo());
                         System.out.println("---------------------");
                     }
                     break;
 
-                case 5:
+                    case 5:
+
                     System.out.println("Saque");
                     System.out.print("Digite o número da conta: ");
                     int numContaSaque = sc.nextInt();
@@ -112,8 +120,8 @@ public class Principal {
                     for (Banco b : contas) {
                         if (b.getNumeroConta() == numContaSaque) {
                             contaSaque = b;
-                            break;
                         }
+                        break;
                     }
 
                     if (contaSaque == null) {
@@ -127,12 +135,11 @@ public class Principal {
                         } else {
                             System.out.println("Saldo insuficiente.");
                         }
-                    }
+                        }
 
                     break;
 
                 case 6:
-                    System.out.println("qual valor deseja depositar");
 
                     System.out.print("Digite o número da conta: ");
                     int  numContaDeposito = sc.nextInt();
@@ -143,10 +150,12 @@ public class Principal {
                         if (b.getNumeroConta() == numContaDeposito) {
                             contaDeposito = b;
                             break;
+
                         }
                     }
 
                     if (contaDeposito == null) {
+
                         System.out.println("Conta não encontrada.");
                     } else {
                         System.out.print("Digite o valor do depósito: ");
@@ -159,7 +168,11 @@ public class Principal {
 
             }
 
-        }   while (opcao != 7) ;
 
-    }
-}
+         }   while ( opcao != 7 ) ;
+
+           System.out.println("Obrigado por utilizar nosso sistema");
+
+         }
+
+         }
